@@ -4,7 +4,7 @@ import time
 import os
 from tqdm import tqdm
 
-data = pd.read_excel('test.xlsx', header=None)
+data = pd.read_excel('train.xlsx', header=None)
 data = data.dropna(axis=1, how='all')
 data = data.values
 data = data.T
@@ -73,4 +73,7 @@ for _, window in enumerate(windows):
 			z_score_median_all = (time_step - median_prev)/median_absolute_deviation_prev
 			z_score_mean_all = (time_step - mean_prev)/mean_absolute_deviation_prev
 
-			print('Anomaly', mean_per_30)
+			print('Anomaly', anomaly_score, mean_per_30)
+
+		else:
+			print('Normal ', anomaly_score, mean_per_30)
